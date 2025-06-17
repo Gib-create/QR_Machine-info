@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panel 001 - Reference</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background-color: #f3f6fa;
+      margin: 0;
+      padding: 2em;
+      color: #222;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 1em;
+      color: #003366;
+    }
+
+    .section {
+      margin-bottom: 2.5em;
+    }
+
+    .section h2 {
+      font-size: 1.25em;
+      margin-bottom: 1em;
+      color: #111;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1em;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      padding: 1em;
+      text-align: left;
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      background-color: #ffcc99 !important;
+      color: #222;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .button-group {
+      margin-top: 1em;
+    }
+
+    button {
+      padding: 0.5em 1.2em;
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 1em;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #ffcc99 !important;
+      color: #222 !important;
+    }
+
+    .ai-context {
+      background: #f4f4f4;
+      border: 1px solid #ccc;
+      padding: 1em;
+      white-space: pre-wrap;
+      font-family: monospace;
+      border-radius: 10px;
+      margin-top: 1em;
+    }
+
+    .qr-block {
+      margin-top: 3em;
+      text-align: center;
+    }
+
+    .qr-block img {
+      max-width: 200px;
+      border: 1px solid #ddd;
+      padding: 8px;
+      background: white;
+      border-radius: 10px;
+    }
+
+    footer {
+      margin-top: 4em;
+      text-align: center;
+      font-size: 0.85em;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <h1>Control Panel 001</h1>
+
+  <div class="button-group" style="margin-bottom: 1em;">
+    <a href="../index.html"><button>← Back to Panel Selection</button></a>
+  </div>
+
+  <div class="section">
+    <h2>Manuals</h2>
+    <div class="cards">
+      <a class="card" href="docs/user_manual.pdf" target="_blank">
+        <strong>Operating Manual</strong>
+        <p>Control system overview and functions.</p>
+      </a>
+      <a class="card" href="docs/wiring_diagram.pdf" target="_blank">
+        <strong>Installation Manual</strong>
+        <p>Instructions for wiring and setup.</p>
+      </a>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Wiring Diagrams & I/O</h2>
+    <div class="cards">
+      <a class="card" href="docs/wiring_diagram.pdf" target="_blank">
+        <strong>Wiring Diagram 1</strong>
+        <p>Complete circuit schematic for panel 001.</p>
+      </a>
+      <a class="card" href="data/io_list.csv" target="_blank">
+        <strong>I/O List</strong>
+        <p>Digital/analog input-output configuration.</p>
+      </a>
+      <a class="card" href="data/bom.csv" target="_blank">
+        <strong>Bill of Materials</strong>
+        <p>Component and part specifications.</p>
+      </a>
+      <a class="card" href="notes/service_notes.md" target="_blank">
+        <strong>Service Notes</strong>
+        <p>Technician history and observations.</p>
+      </a>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Panel Tools</h2>
+    <div class="button-group">
+      <button onclick="copyAIContext()">Copy Context for AI</button>
+      <a href="files.zip" download><button>Download All Files (ZIP)</button></a>
+    </div>
+    <div class="ai-context" id="aiPrompt">
+You are helping me troubleshoot Control Panel 001.
+
+Here are the available documents:
+- wiring_diagram.pdf
+- user_manual.pdf
+- io_list.csv
+- bom.csv
+- service_notes.md
+
+Refer to these files to answer technical questions about control panel function, I/O configuration, or issues with startup, safety, or diagnostics.
+    </div>
+  </div>
+
+  <div class="qr-block">
+    <h2>Scan QR to Access This Page</h2>
+    <img src="panel-001_qr_small.png" alt="Panel QR Code" />
+  </div>
+
+  <footer>
+    Engineering Access Portal
+  </footer>
+
+  <script>
+    function copyAIContext() {
+      const text = document.getElementById('aiPrompt').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Context copied to clipboard!');
+      }).catch(err => {
+        alert('Failed to copy: ' + err);
+      });
+    }
+  </script>
+</body>
+</html>
