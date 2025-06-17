@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel 001 - Documentation</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 2em; }
+        h1 { color: #222; }
+        .section { margin-bottom: 2em; }
+        .file-links a { display: block; margin: 0.5em 0; text-decoration: none; color: #0066cc; }
+        .file-links a:hover { text-decoration: underline; }
+        .ai-context { background: #f4f4f4; border: 1px solid #ccc; padding: 1em; white-space: pre-wrap; font-family: monospace; }
+        #copyButton, #downloadButton {
+            padding: 0.5em 1em;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-right: 1em;
+        }
+        #copyButton:hover, #downloadButton:hover {
+            background-color: #005bb5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Control Panel 001 - Documentation</h1>
+
+    <div class="section">
+        <h2>Scan QR to Access this Page</h2>
+        <img src="panel-001_qr_small.png" alt="Panel 001 QR Code" />
+    </div>
+
+    <div class="section">
+        <h2>Documentation</h2>
+        <div class="file-links" id="doc-links">
+            <a href="docs/wiring_diagram.pdf" target="_blank">wiring_diagram.pdf</a>
+            <a href="docs/user_manual.pdf" target="_blank">user_manual.pdf</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Data Files</h2>
+        <div class="file-links" id="data-links">
+            <a href="data/io_list.csv" target="_blank">io_list.csv</a>
+            <a href="data/bom.csv" target="_blank">bom.csv</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Service Notes</h2>
+        <div class="file-links" id="note-links">
+            <a href="notes/service_notes.md" target="_blank">service_notes.md</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Panel Tools</h2>
+        <button id="copyButton" onclick="copyAIContext()">Copy Context for AI</button>
+        <a href="files.zip" download><button id="downloadButton">Download All Files (ZIP)</button></a>
+    </div>
+
+    <div class="section">
+        <h2>AI Context</h2>
+        <div class="ai-context" id="aiPrompt">
+You are helping me troubleshoot Control Panel 001.
+
+Here are the available documents:
+- wiring_diagram.pdf
+- user_manual.pdf
+- io_list.csv
+- bom.csv
+- service_notes.md
+
+Refer to these files to answer technical questions about control panel function, I/O configuration, or issues with startup, safety, or diagnostics.
+        </div>
+    </div>
+
+    <script>
+        function copyAIContext() {
+            const text = document.getElementById('aiPrompt').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Context copied to clipboard!');
+            }).catch(err => {
+                alert('Failed to copy: ' + err);
+            });
+        }
+    </script>
+</body>
+</html>
